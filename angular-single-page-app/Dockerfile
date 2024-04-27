@@ -22,6 +22,7 @@ WORKDIR /app
 # Create a new user with UID 10014
 RUN addgroup -g 10014 choreo && \
     adduser  --disabled-password  --no-create-home --uid 10014 --ingroup choreo choreouser
+USER 10014
 
 # Copy the package.json and package-lock.json to the container
 COPY package*.json ./
@@ -42,7 +43,6 @@ FROM nginx:alpine
 COPY --from=build /app/dist/angular-spa /usr/share/nginx/html
 COPY nginx/default.conf /etc/nginx/conf.d/
 
-USER 10014
 
 # Expose port 80 for serving the web application
 EXPOSE 80
