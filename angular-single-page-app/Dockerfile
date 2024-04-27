@@ -14,11 +14,15 @@
 # specific language governing permissions and limitations
 # under the License.
 
-USER 10014
 # Use an official Node.js runtime as the base image
 FROM node:18 AS build
 # Set the working directory in the container
 WORKDIR /app
+
+
+# Create a new user and switch to it
+RUN adduser -D 10014
+USER 10014
 
 # Copy the package.json and package-lock.json to the container
 COPY package*.json ./
