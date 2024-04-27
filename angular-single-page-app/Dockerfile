@@ -16,7 +16,7 @@
 
 # Use an official Node.js runtime as the base image
 FROM node:18 AS build
-
+USER 10014
 # Set the working directory in the container
 WORKDIR /app
 
@@ -30,7 +30,7 @@ RUN npm install
 COPY . .
 
 # Build the Angular application for production
-RUN npm run build 
+RUN npm run build
 
 # Use a lightweight Nginx image as the final image
 FROM nginx:alpine
