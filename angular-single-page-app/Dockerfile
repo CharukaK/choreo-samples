@@ -19,11 +19,6 @@ FROM node:18 AS build
 # Set the working directory in the container
 WORKDIR /app
 
-
-# Create a new user and switch to it
-RUN adduser -D 10014
-USER 10014
-
 # Copy the package.json and package-lock.json to the container
 COPY package*.json ./
 
@@ -42,6 +37,8 @@ FROM nginx:alpine
 # Copy the built Angular app from the previous stage to the Nginx web server directory
 COPY --from=build /app/dist/angular-spa /usr/share/nginx/html
 COPY nginx/default.conf /etc/nginx/conf.d/
+
+USER 10014
 
 # Expose port 80 for serving the web application
 EXPOSE 80
