@@ -19,6 +19,10 @@ FROM node:18 AS build
 # Set the working directory in the container
 WORKDIR /app
 
+# Create a new user with UID 10014
+RUN addgroup -g 10014 choreo && \
+    adduser  --disabled-password  --no-create-home --uid 10014 --ingroup choreo choreouser
+
 # Copy the package.json and package-lock.json to the container
 COPY package*.json ./
 
