@@ -4,5 +4,6 @@ spec:
     inbound:
         - name: could-be-bad-endpoint
           port: 3000
+          context: /
           type: REST
           networkVisibility: Public
