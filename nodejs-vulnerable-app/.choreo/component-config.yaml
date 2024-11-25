@@ -1,0 +1,8 @@
+apiVersion: core.choreo.dev/v1beta1
+kind: ComponentConfig
+spec:
+    inbound:
+        - name: could-be-bad-endpoint
+          port: 3000
+          type: REST
+          networkVisibility: Public
