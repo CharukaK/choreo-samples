@@ -11,5 +11,5 @@ func main() {
 		fmt.Println("Arg", i, ": ", arg)
 	}
 
-    os.Exit(1)
+    // os.Exit(1)
 }
